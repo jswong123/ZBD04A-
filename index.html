@@ -14,24 +14,16 @@
 
     <title>ZBD04A火控程序</title>
 
-
     <style>
-
-        /* =========================================
-           全局
-           ========================================= */
 
         * {
             box-sizing: border-box;
         }
 
-
         html,
         body {
-
             width: 100%;
             height: 100%;
-
             margin: 0;
             padding: 0;
 
@@ -44,73 +36,54 @@
                 sans-serif;
 
             overflow: hidden;
-
         }
 
 
-
-        /* =========================================
-           整个程序
-           ========================================= */
+        /* =========================
+           整体布局
+           ========================= */
 
         .main-container {
-
             width: 100vw;
             height: 100vh;
 
             display: flex;
-
             flex-direction: row;
 
             align-items: stretch;
 
             background: white;
-
         }
 
 
-
-        /* =========================================
-           左侧地图区域
-           自动占据剩余空间
-           ========================================= */
+        /* =========================
+           左侧地图
+           ========================= */
 
         .map-container {
-
             flex: 1;
 
             min-width: 0;
-
             height: 100vh;
 
             display: flex;
 
             justify-content: center;
-
             align-items: center;
 
-            padding: 8px;
+            padding: 4px;
 
             overflow: hidden;
-
         }
 
 
-
-        /* =========================================
-           SVG 地图
-           ========================================= */
-
         #mapSvg {
-
             display: block;
 
             width: 100%;
-
             height: 100%;
 
             max-width: 100%;
-
             max-height: 100%;
 
             background: white;
@@ -118,26 +91,22 @@
             touch-action: none;
 
             user-select: none;
-
             -webkit-user-select: none;
-
         }
 
 
-
-        /* =========================================
-           右侧控制区域
-           ========================================= */
+        /* =========================
+           右侧控制栏
+           ========================= */
 
         .control-panel {
 
-            width: 270px;
-
-            min-width: 270px;
+            width: 220px;
+            min-width: 220px;
 
             height: 100vh;
 
-            padding: 18px;
+            padding: 7px 9px;
 
             background: white;
 
@@ -146,59 +115,50 @@
             overflow-y: auto;
 
             flex-shrink: 0;
-
         }
 
 
-
-        /* =========================================
-           标题
-           ========================================= */
+        /* 标题 */
 
         .section-title {
 
-            font-size: 20px;
-
+            font-size: 15px;
             font-weight: bold;
 
             text-align: center;
 
-            margin-bottom: 10px;
-
+            margin-top: 2px;
+            margin-bottom: 4px;
         }
 
 
-
-        /* =========================================
+        /* =========================
            比例尺
-           ========================================= */
+           ========================= */
 
         .scale-row {
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
-            gap: 6px;
+            gap: 4px;
 
-            font-size: 16px;
+            font-size: 12px;
 
-            margin-bottom: 10px;
-
+            margin-bottom: 3px;
         }
 
 
         input {
 
-            width: 90px;
+            width: 68px;
+            height: 29px;
 
-            height: 38px;
+            padding: 2px 4px;
 
-            padding: 4px 6px;
-
-            font-size: 18px;
+            font-size: 14px;
 
             text-align: center;
 
@@ -207,14 +167,12 @@
             border-radius: 4px;
 
             background: white;
-
         }
 
 
-
-        /* =========================================
+        /* =========================
            按钮
-           ========================================= */
+           ========================= */
 
         button {
 
@@ -222,22 +180,23 @@
 
             width: 100%;
 
-            height: 46px;
+            height: 32px;
 
-            margin: 9px auto;
+            margin: 4px auto;
+
+            padding: 0;
 
             border: 1px solid #bbbbbb;
 
-            border-radius: 8px;
+            border-radius: 6px;
 
             background: #eeeeee;
 
-            font-size: 16px;
+            font-size: 12px;
 
             color: #007aff;
 
             cursor: pointer;
-
         }
 
 
@@ -248,153 +207,169 @@
         }
 
 
-
-        /* =========================================
-           间距
-           ========================================= */
+        /* 小间隔 */
 
         .spacer {
 
-            height: 15px;
+            height: 4px;
 
         }
 
 
-
-        /* =========================================
+        /* =========================
            当前模式
-           ========================================= */
+           ========================= */
 
         .mode-label {
 
-            margin-top: 20px;
-
-            margin-bottom: 10px;
+            margin-top: 6px;
+            margin-bottom: 4px;
 
             text-align: center;
 
-            font-size: 14px;
+            font-size: 10px;
 
+            color: #444444;
         }
 
 
-
-        /* =========================================
-           结果
-           ========================================= */
+        /* =========================
+           结果显示
+           ========================= */
 
         .result {
 
-            margin-top: 12px;
+            margin-top: 4px;
 
             white-space: pre-line;
 
             font-family:
-                Consolas,
-                "Courier New",
-                monospace;
+                Arial,
+                "Microsoft YaHei",
+                "PingFang SC",
+                sans-serif;
 
-            font-size: 13px;
+            font-size: 10px;
 
-            line-height: 1.55;
+            line-height: 1.22;
 
             text-align: left;
 
+            color: #222222;
         }
 
 
-
-        /* =========================================
-           平板横屏
-           ========================================= */
+        /* =========================
+           较小的平板
+           ========================= */
 
         @media (max-width: 1100px) {
 
             .control-panel {
 
-                width: 230px;
+                width: 205px;
+                min-width: 205px;
 
-                min-width: 230px;
-
-                padding: 12px;
-
+                padding: 6px 7px;
             }
 
 
             .section-title {
-
-                font-size: 17px;
-
-            }
-
-
-            button {
-
-                height: 42px;
 
                 font-size: 14px;
 
-            }
-
-
-            .result {
-
-                font-size: 12px;
-
-            }
-
-        }
-
-
-
-        /* =========================================
-           更窄屏幕
-           ========================================= */
-
-        @media (max-width: 800px) {
-
-            .control-panel {
-
-                width: 200px;
-
-                min-width: 200px;
-
-                padding: 8px;
-
-            }
-
-
-            button {
-
-                height: 40px;
-
-                font-size: 13px;
-
-            }
-
-
-            .section-title {
-
-                font-size: 15px;
-
+                margin-top: 1px;
+                margin-bottom: 3px;
             }
 
 
             .scale-row {
 
-                font-size: 13px;
+                font-size: 11px;
 
+                margin-bottom: 2px;
             }
 
 
             input {
 
-                width: 70px;
+                width: 63px;
+                height: 27px;
 
-                height: 34px;
+                font-size: 13px;
+            }
 
-                font-size: 15px;
 
+            button {
+
+                height: 30px;
+
+                margin: 3px auto;
+
+                font-size: 11px;
+            }
+
+
+            .spacer {
+
+                height: 3px;
+            }
+
+
+            .mode-label {
+
+                margin-top: 4px;
+                margin-bottom: 3px;
+
+                font-size: 9px;
+            }
+
+
+            .result {
+
+                margin-top: 3px;
+
+                font-size: 9px;
+
+                line-height: 1.18;
+            }
+        }
+
+
+        /* =========================
+           更窄屏幕
+           ========================= */
+
+        @media (max-width: 850px) {
+
+            .control-panel {
+
+                width: 190px;
+                min-width: 190px;
+
+                padding: 5px 6px;
+            }
+
+
+            .section-title {
+
+                font-size: 13px;
+            }
+
+
+            button {
+
+                height: 29px;
+
+                font-size: 10px;
+            }
+
+
+            .result {
+
+                font-size: 8.5px;
+
+                line-height: 1.15;
             }
 
         }
@@ -405,16 +380,15 @@
 </head>
 
 
-
 <body>
 
 
 <div class="main-container">
 
 
-    <!-- =========================================
-         左侧地图
-         ========================================= -->
+    <!-- =========================
+         地图
+         ========================= -->
 
     <div class="map-container">
 
@@ -426,9 +400,7 @@
             xmlns="http://www.w3.org/2000/svg">
 
 
-            <!-- =================================
-                 白色背景
-                 ================================= -->
+            <!-- 背景 -->
 
             <rect
                 x="0"
@@ -439,166 +411,67 @@
             </rect>
 
 
+            <!-- =========================
+                 纵向网格线
+                 ========================= -->
 
-            <!-- =================================
-                 地图网格
+            <line x1="70"  y1="70" x2="70"  y2="630"
+                  stroke="black" stroke-width="1"/>
 
-                 左上：
-                 70,70
+            <line x1="150" y1="70" x2="150" y2="630"
+                  stroke="black" stroke-width="1"/>
 
-                 右下：
-                 630,630
+            <line x1="230" y1="70" x2="230" y2="630"
+                  stroke="black" stroke-width="1"/>
 
-                 每格：
-                 80
-                 ================================= -->
+            <line x1="310" y1="70" x2="310" y2="630"
+                  stroke="black" stroke-width="1"/>
 
+            <line x1="390" y1="70" x2="390" y2="630"
+                  stroke="black" stroke-width="1"/>
 
-            <!-- ================================
-                 竖线
-                 ================================ -->
+            <line x1="470" y1="70" x2="470" y2="630"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="70"
-                x2="70"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="550" y1="70" x2="550" y2="630"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="150"
-                y1="70"
-                x2="150"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="230"
-                y1="70"
-                x2="230"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="310"
-                y1="70"
-                x2="310"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="390"
-                y1="70"
-                x2="390"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="470"
-                y1="70"
-                x2="470"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="550"
-                y1="70"
-                x2="550"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="630"
-                y1="70"
-                x2="630"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="630" y1="70" x2="630" y2="630"
+                  stroke="black" stroke-width="1"/>
 
 
+            <!-- =========================
+                 横向网格线
+                 ========================= -->
 
-            <!-- ================================
-                 横线
-                 ================================ -->
+            <line x1="70" y1="70"  x2="630" y2="70"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="70"
-                x2="630"
-                y2="70"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="150" x2="630" y2="150"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="150"
-                x2="630"
-                y2="150"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="230" x2="630" y2="230"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="230"
-                x2="630"
-                y2="230"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="310" x2="630" y2="310"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="310"
-                x2="630"
-                y2="310"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="390" x2="630" y2="390"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="390"
-                x2="630"
-                y2="390"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="470" x2="630" y2="470"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="470"
-                x2="630"
-                y2="470"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="550" x2="630" y2="550"
+                  stroke="black" stroke-width="1"/>
 
-            <line
-                x1="70"
-                y1="550"
-                x2="630"
-                y2="550"
-                stroke="black"
-                stroke-width="1"/>
-
-            <line
-                x1="70"
-                y1="630"
-                x2="630"
-                y2="630"
-                stroke="black"
-                stroke-width="1"/>
+            <line x1="70" y1="630" x2="630" y2="630"
+                  stroke="black" stroke-width="1"/>
 
 
-
-            <!-- =================================
-                 横坐标
-                 1 - 7
-                 每个数字位于对应方格中央
-                 ================================= -->
+            <!-- =========================
+                 顶部数字
+                 ========================= -->
 
             <g
                 font-family="Arial"
@@ -607,65 +480,20 @@
                 fill="black"
                 text-anchor="middle">
 
-
-                <text
-                    x="110"
-                    y="45">
-                    1
-                </text>
-
-
-                <text
-                    x="190"
-                    y="45">
-                    2
-                </text>
-
-
-                <text
-                    x="270"
-                    y="45">
-                    3
-                </text>
-
-
-                <text
-                    x="350"
-                    y="45">
-                    4
-                </text>
-
-
-                <text
-                    x="430"
-                    y="45">
-                    5
-                </text>
-
-
-                <text
-                    x="510"
-                    y="45">
-                    6
-                </text>
-
-
-                <text
-                    x="590"
-                    y="45">
-                    7
-                </text>
-
+                <text x="110" y="45">1</text>
+                <text x="190" y="45">2</text>
+                <text x="270" y="45">3</text>
+                <text x="350" y="45">4</text>
+                <text x="430" y="45">5</text>
+                <text x="510" y="45">6</text>
+                <text x="590" y="45">7</text>
 
             </g>
 
 
-
-            <!-- =================================
-                 纵坐标
-                 A - G
-                 每个字母位于对应方格中央
-                 ================================= -->
+            <!-- =========================
+                 左侧字母
+                 ========================= -->
 
             <g
                 font-family="Arial"
@@ -675,63 +503,20 @@
                 text-anchor="middle"
                 dominant-baseline="middle">
 
-
-                <text
-                    x="42"
-                    y="110">
-                    A
-                </text>
-
-
-                <text
-                    x="42"
-                    y="190">
-                    B
-                </text>
-
-
-                <text
-                    x="42"
-                    y="270">
-                    C
-                </text>
-
-
-                <text
-                    x="42"
-                    y="350">
-                    D
-                </text>
-
-
-                <text
-                    x="42"
-                    y="430">
-                    E
-                </text>
-
-
-                <text
-                    x="42"
-                    y="510">
-                    F
-                </text>
-
-
-                <text
-                    x="42"
-                    y="590">
-                    G
-                </text>
-
+                <text x="42" y="110">A</text>
+                <text x="42" y="190">B</text>
+                <text x="42" y="270">C</text>
+                <text x="42" y="350">D</text>
+                <text x="42" y="430">E</text>
+                <text x="42" y="510">F</text>
+                <text x="42" y="590">G</text>
 
             </g>
 
 
-
-            <!-- =================================
-                 自身与目标连线
-                 ================================= -->
+            <!-- =========================
+                 自身 - 目标连线
+                 ========================= -->
 
             <line
                 id="connectionLine"
@@ -752,15 +537,13 @@
             </line>
 
 
-
-            <!-- =================================
-                 自身位置
-                 ================================= -->
+            <!-- =========================
+                 自身标记
+                 ========================= -->
 
             <g
                 id="ownMarker"
                 visibility="hidden">
-
 
                 <circle
                     id="ownCircle"
@@ -772,7 +555,6 @@
 
                     fill="blue">
                 </circle>
-
 
                 <text
                     id="ownMarkerText"
@@ -794,19 +576,16 @@
 
                 </text>
 
-
             </g>
 
 
-
-            <!-- =================================
-                 目标位置
-                 ================================= -->
+            <!-- =========================
+                 目标标记
+                 ========================= -->
 
             <g
                 id="targetMarker"
                 visibility="hidden">
-
 
                 <circle
                     id="targetCircle"
@@ -818,7 +597,6 @@
 
                     fill="red">
                 </circle>
-
 
                 <text
                     id="targetMarkerText"
@@ -840,7 +618,6 @@
 
                 </text>
 
-
             </g>
 
 
@@ -851,16 +628,14 @@
 
 
 
-    <!-- =========================================
-         右侧控制区域
-         ========================================= -->
+    <!-- =========================
+         右侧控制栏
+         ========================= -->
 
     <div class="control-panel">
 
 
-        <!-- =====================================
-             地图比例尺
-             ===================================== -->
+        <!-- 比例尺 -->
 
         <div class="section-title">
 
@@ -871,32 +646,15 @@
 
         <div class="scale-row">
 
-
-            <span>
-
-                1 格 =
-
-            </span>
-
-
-            <!-- 默认空白 -->
+            <span>1 格 =</span>
 
             <input
                 id="scaleInput"
-
                 type="number"
-
                 inputmode="decimal"
-
                 step="0.1">
 
-
-            <span>
-
-                m
-
-            </span>
-
+            <span>m</span>
 
         </div>
 
@@ -909,11 +667,11 @@
 
 
 
-        <!-- =====================================
-             位置设置
-             ===================================== -->
-
         <div class="spacer"></div>
+
+
+
+        <!-- 位置 -->
 
 
         <div class="section-title">
@@ -938,11 +696,11 @@
 
 
 
-        <!-- =====================================
-             清除
-             ===================================== -->
-
         <div class="spacer"></div>
+
+
+
+        <!-- 清除 -->
 
 
         <div class="section-title">
@@ -967,9 +725,8 @@
 
 
 
-        <!-- =====================================
-             当前模式
-             ===================================== -->
+        <!-- 当前模式 -->
+
 
         <div
             id="modeLabel"
@@ -981,9 +738,8 @@
 
 
 
-        <!-- =====================================
-             结果
-             ===================================== -->
+        <!-- 结果 -->
+
 
         <div
             id="resultLabel"
@@ -1001,9 +757,10 @@
 <script>
 
 
-// ============================================
-// 地图参数
-// ============================================
+/* =========================
+   基础参数
+   ========================= */
+
 
 const GRID_SIZE = 7;
 
@@ -1014,156 +771,103 @@ const MAP_LEFT = 70;
 const MAP_TOP = 70;
 
 const MAP_SIZE =
-    GRID_SIZE
-    *
-    CELL_SIZE;
+    GRID_SIZE * CELL_SIZE;
 
 
 
-// ============================================
-// 程序状态
-// ============================================
+/* =========================
+   数据状态
+   ========================= */
 
-
-// 比例尺
-// null = 尚未设置
 
 let scale = null;
 
-
-// 自身位置
-
 let ownPoint = null;
 
-
-// 目标位置
-
 let targetPoint = null;
-
-
-// 当前选择模式
-//
-// null
-// own
-// target
 
 let selectionMode = null;
 
 
 
-// ============================================
-// 获取页面元素
-// ============================================
+/* =========================
+   获取网页元素
+   ========================= */
+
 
 const svg =
-    document.getElementById(
-        "mapSvg"
-    );
+    document.getElementById("mapSvg");
 
 
 const scaleInput =
-    document.getElementById(
-        "scaleInput"
-    );
+    document.getElementById("scaleInput");
 
 
 const applyScaleButton =
-    document.getElementById(
-        "applyScaleButton"
-    );
+    document.getElementById("applyScaleButton");
 
 
 const ownButton =
-    document.getElementById(
-        "ownButton"
-    );
+    document.getElementById("ownButton");
 
 
 const targetButton =
-    document.getElementById(
-        "targetButton"
-    );
+    document.getElementById("targetButton");
 
 
 const clearTargetButton =
-    document.getElementById(
-        "clearTargetButton"
-    );
+    document.getElementById("clearTargetButton");
 
 
 const clearAllButton =
-    document.getElementById(
-        "clearAllButton"
-    );
+    document.getElementById("clearAllButton");
 
 
 const modeLabel =
-    document.getElementById(
-        "modeLabel"
-    );
+    document.getElementById("modeLabel");
 
 
 const resultLabel =
-    document.getElementById(
-        "resultLabel"
-    );
-
+    document.getElementById("resultLabel");
 
 
 const ownMarker =
-    document.getElementById(
-        "ownMarker"
-    );
+    document.getElementById("ownMarker");
 
 
 const ownCircle =
-    document.getElementById(
-        "ownCircle"
-    );
+    document.getElementById("ownCircle");
 
 
 const ownMarkerText =
-    document.getElementById(
-        "ownMarkerText"
-    );
-
+    document.getElementById("ownMarkerText");
 
 
 const targetMarker =
-    document.getElementById(
-        "targetMarker"
-    );
+    document.getElementById("targetMarker");
 
 
 const targetCircle =
-    document.getElementById(
-        "targetCircle"
-    );
+    document.getElementById("targetCircle");
 
 
 const targetMarkerText =
-    document.getElementById(
-        "targetMarkerText"
-    );
+    document.getElementById("targetMarkerText");
 
 
 const connectionLine =
-    document.getElementById(
-        "connectionLine"
-    );
+    document.getElementById("connectionLine");
 
 
 
-// ============================================
-// 设置自身位置模式
-// ============================================
+/* =========================
+   设置模式
+   ========================= */
+
 
 function selectOwnMode() {
 
-
-    selectionMode =
-        "own";
-
+    selectionMode = "own";
 
     modeLabel.textContent =
         "当前模式：设置自身位置";
@@ -1171,17 +875,9 @@ function selectOwnMode() {
 }
 
 
-
-// ============================================
-// 设置目标位置模式
-// ============================================
-
 function selectTargetMode() {
 
-
-    selectionMode =
-        "target";
-
+    selectionMode = "target";
 
     modeLabel.textContent =
         "当前模式：设置目标位置";
@@ -1190,13 +886,12 @@ function selectTargetMode() {
 
 
 
-// ============================================
-// 将屏幕触摸位置
-// 转换成 SVG 内部坐标
-// ============================================
+/* =========================
+   屏幕坐标转换 SVG 坐标
+   ========================= */
+
 
 function getSvgPoint(event) {
-
 
     const point =
         svg.createSVGPoint();
@@ -1204,7 +899,6 @@ function getSvgPoint(event) {
 
     point.x =
         event.clientX;
-
 
     point.y =
         event.clientY;
@@ -1229,11 +923,9 @@ function getSvgPoint(event) {
 
     return {
 
-        x:
-            transformed.x,
+        x: transformed.x,
 
-        y:
-            transformed.y
+        y: transformed.y
 
     };
 
@@ -1241,20 +933,15 @@ function getSvgPoint(event) {
 
 
 
-// ============================================
-// 点击地图
-// ============================================
+/* =========================
+   点击地图
+   ========================= */
+
 
 function mapClick(event) {
 
 
-    // ========================================
-    // 必须先选择自身或者目标
-    // ========================================
-
-    if (
-        selectionMode === null
-    ) {
+    if (selectionMode === null) {
 
         alert(
             "请先点击“设置自身位置”或“设置目标位置”"
@@ -1265,11 +952,8 @@ function mapClick(event) {
     }
 
 
-
     const point =
-        getSvgPoint(
-            event
-        );
+        getSvgPoint(event);
 
 
     if (!point) {
@@ -1279,44 +963,20 @@ function mapClick(event) {
     }
 
 
-
-    // ========================================
-    // 转换成地图内部坐标
-    // ========================================
-
     const mapX =
-        point.x
-        -
-        MAP_LEFT;
+        point.x - MAP_LEFT;
 
 
     const mapY =
-        point.y
-        -
-        MAP_TOP;
+        point.y - MAP_TOP;
 
 
-
-    // ========================================
-    // 地图范围外无效
-    // ========================================
 
     if (
-
-        mapX < 0
-
-        ||
-
-        mapY < 0
-
-        ||
-
-        mapX >= MAP_SIZE
-
-        ||
-
+        mapX < 0 ||
+        mapY < 0 ||
+        mapX >= MAP_SIZE ||
         mapY >= MAP_SIZE
-
     ) {
 
         return;
@@ -1325,31 +985,18 @@ function mapClick(event) {
 
 
 
-    // ========================================
-    // 设置自身位置
-    // ========================================
-
-    if (
-        selectionMode === "own"
-    ) {
+    if (selectionMode === "own") {
 
         ownPoint = {
 
-            x:
-                mapX,
+            x: mapX,
 
-            y:
-                mapY
+            y: mapY
 
         };
 
     }
 
-
-
-    // ========================================
-    // 设置目标位置
-    // ========================================
 
     else if (
         selectionMode === "target"
@@ -1357,11 +1004,9 @@ function mapClick(event) {
 
         targetPoint = {
 
-            x:
-                mapX,
+            x: mapX,
 
-            y:
-                mapY
+            y: mapY
 
         };
 
@@ -1369,12 +1014,7 @@ function mapClick(event) {
 
 
 
-    // ========================================
-    // 设置完成
-    // ========================================
-
-    selectionMode =
-        null;
+    selectionMode = null;
 
 
     modeLabel.textContent =
@@ -1389,30 +1029,23 @@ function mapClick(event) {
 
 
 
-// ============================================
-// 更新地图上的点
-// ============================================
+/* =========================
+   更新地图标记
+   ========================= */
+
 
 function updateMarkers() {
 
-
-    // ========================================
-    // 自身位置
-    // ========================================
 
     if (ownPoint) {
 
 
         const x =
-            MAP_LEFT
-            +
-            ownPoint.x;
+            MAP_LEFT + ownPoint.x;
 
 
         const y =
-            MAP_TOP
-            +
-            ownPoint.y;
+            MAP_TOP + ownPoint.y;
 
 
 
@@ -1447,8 +1080,8 @@ function updateMarkers() {
 
     }
 
-    else {
 
+    else {
 
         ownMarker.setAttribute(
             "visibility",
@@ -1458,24 +1091,16 @@ function updateMarkers() {
     }
 
 
-
-    // ========================================
-    // 目标位置
-    // ========================================
 
     if (targetPoint) {
 
 
         const x =
-            MAP_LEFT
-            +
-            targetPoint.x;
+            MAP_LEFT + targetPoint.x;
 
 
         const y =
-            MAP_TOP
-            +
-            targetPoint.y;
+            MAP_TOP + targetPoint.y;
 
 
 
@@ -1510,8 +1135,8 @@ function updateMarkers() {
 
     }
 
-    else {
 
+    else {
 
         targetMarker.setAttribute(
             "visibility",
@@ -1522,58 +1147,33 @@ function updateMarkers() {
 
 
 
-    // ========================================
-    // 两点连线
-    // ========================================
-
     if (
-        ownPoint
-        &&
+        ownPoint &&
         targetPoint
     ) {
 
 
         connectionLine.setAttribute(
-
             "x1",
-
-            MAP_LEFT
-            +
-            ownPoint.x
-
+            MAP_LEFT + ownPoint.x
         );
 
 
         connectionLine.setAttribute(
-
             "y1",
-
-            MAP_TOP
-            +
-            ownPoint.y
-
+            MAP_TOP + ownPoint.y
         );
 
 
         connectionLine.setAttribute(
-
             "x2",
-
-            MAP_LEFT
-            +
-            targetPoint.x
-
+            MAP_LEFT + targetPoint.x
         );
 
 
         connectionLine.setAttribute(
-
             "y2",
-
-            MAP_TOP
-            +
-            targetPoint.y
-
+            MAP_TOP + targetPoint.y
         );
 
 
@@ -1584,8 +1184,8 @@ function updateMarkers() {
 
     }
 
-    else {
 
+    else {
 
         connectionLine.setAttribute(
             "visibility",
@@ -1598,9 +1198,10 @@ function updateMarkers() {
 
 
 
-// ============================================
-// 点击位置转换成坐标
-// ============================================
+/* =========================
+   坐标转换
+   ========================= */
+
 
 function pixelToCoordinate(
     x,
@@ -1608,117 +1209,73 @@ function pixelToCoordinate(
 ) {
 
 
-    // ========================================
-    // 横向
-    // ========================================
-
     const gx =
-        x
-        /
-        CELL_SIZE;
+        x / CELL_SIZE;
+
+
+    const gy =
+        y / CELL_SIZE;
+
 
 
     let column =
-        Math.floor(
-            gx
-        );
+        Math.floor(gx);
+
+
+    let row =
+        Math.floor(gy);
+
 
 
     column =
         Math.max(
-
             0,
-
             Math.min(
-
                 GRID_SIZE - 1,
-
                 column
-
             )
-
-        );
-
-
-
-    const number =
-        column
-        +
-        1;
-
-
-    const xFraction =
-        gx
-        -
-        column;
-
-
-
-    // ========================================
-    // 纵向
-    // ========================================
-
-    const gy =
-        y
-        /
-        CELL_SIZE;
-
-
-    let row =
-        Math.floor(
-            gy
         );
 
 
     row =
         Math.max(
-
             0,
-
             Math.min(
-
                 GRID_SIZE - 1,
-
                 row
-
             )
-
         );
 
+
+
+    const number =
+        column + 1;
 
 
     const letter =
         String.fromCharCode(
-
-            "A".charCodeAt(0)
-
-            +
-
-            row
-
+            "A".charCodeAt(0) + row
         );
 
 
+    const xFraction =
+        gx - column;
+
+
     const yFraction =
-        gy
-        -
-        row;
+        gy - row;
 
 
 
     return {
 
-        number:
-            number,
+        number: number,
 
-        letter:
-            letter,
+        letter: letter,
 
-        xFraction:
-            xFraction,
+        xFraction: xFraction,
 
-        yFraction:
-            yFraction
+        yFraction: yFraction
 
     };
 
@@ -1726,13 +1283,12 @@ function pixelToCoordinate(
 
 
 
-// ============================================
-// 格式化坐标
-// ============================================
+/* =========================
+   坐标文字
+   ========================= */
 
-function formatCoordinate(
-    point
-) {
+
+function formatCoordinate(point) {
 
 
     if (!point) {
@@ -1744,49 +1300,28 @@ function formatCoordinate(
 
     const data =
         pixelToCoordinate(
-
             point.x,
-
             point.y
-
         );
 
 
     return (
 
-        "横 "
-        +
-        data.number
+        "横 " +
 
-        +
+        data.number +
 
-        " + "
+        " + " +
 
-        +
+        data.xFraction.toFixed(2) +
 
-        data.xFraction.toFixed(2)
+        " 格，纵 " +
 
-        +
+        data.letter +
 
-        " 格, "
+        " + " +
 
-        +
-
-        "纵 "
-
-        +
-
-        data.letter
-
-        +
-
-        " + "
-
-        +
-
-        data.yFraction.toFixed(2)
-
-        +
+        data.yFraction.toFixed(2) +
 
         " 格"
 
@@ -1796,21 +1331,17 @@ function formatCoordinate(
 
 
 
-// ============================================
-// 距离计算
-// ============================================
+/* =========================
+   距离计算
+   ========================= */
+
 
 function calculateDistance() {
 
 
     if (
-
-        !ownPoint
-
-        ||
-
+        !ownPoint ||
         !targetPoint
-
     ) {
 
         return null;
@@ -1819,58 +1350,33 @@ function calculateDistance() {
 
 
 
-    // ========================================
-    // 横向格数
-    // ========================================
-
     const dxGrid =
+
         Math.abs(
-
-            targetPoint.x
-
-            -
-
+            targetPoint.x -
             ownPoint.x
-
         )
 
-        /
-
-        CELL_SIZE;
+        / CELL_SIZE;
 
 
-
-    // ========================================
-    // 纵向格数
-    // ========================================
 
     const dyGrid =
+
         Math.abs(
-
-            targetPoint.y
-
-            -
-
+            targetPoint.y -
             ownPoint.y
-
         )
 
-        /
-
-        CELL_SIZE;
+        / CELL_SIZE;
 
 
-
-    // ========================================
-    // 直线格距
-    // ========================================
 
     const gridDistance =
+
         Math.sqrt(
 
-            dxGrid ** 2
-
-            +
+            dxGrid ** 2 +
 
             dyGrid ** 2
 
@@ -1880,14 +1386,11 @@ function calculateDistance() {
 
     return {
 
-        dxGrid:
-            dxGrid,
+        dxGrid: dxGrid,
 
-        dyGrid:
-            dyGrid,
+        dyGrid: dyGrid,
 
-        gridDistance:
-            gridDistance
+        gridDistance: gridDistance
 
     };
 
@@ -1895,9 +1398,10 @@ function calculateDistance() {
 
 
 
-// ============================================
-// 更新比例尺
-// ============================================
+/* =========================
+   设置比例尺
+   ========================= */
+
 
 function updateScale() {
 
@@ -1906,18 +1410,13 @@ function updateScale() {
         scaleInput.value.trim();
 
 
+    if (text === "") {
 
-    // ========================================
-    // 输入为空
-    // ========================================
-
-    if (
-        text === ""
-    ) {
 
         alert(
             "请输入比例尺，例如 157"
         );
+
 
         return;
 
@@ -1926,31 +1425,20 @@ function updateScale() {
 
 
     const value =
-        Number(
-            text
-        );
+        Number(text);
 
 
-
-    // ========================================
-    // 非法数字
-    // ========================================
 
     if (
-
-        !Number.isFinite(
-            value
-        )
-
-        ||
-
+        !Number.isFinite(value) ||
         value <= 0
-
     ) {
+
 
         alert(
             "请输入有效比例尺，例如 157"
         );
+
 
         return;
 
@@ -1958,8 +1446,7 @@ function updateScale() {
 
 
 
-    scale =
-        value;
+    scale = value;
 
 
     updateResult();
@@ -1968,9 +1455,10 @@ function updateScale() {
 
 
 
-// ============================================
-// 更新右侧数据显示
-// ============================================
+/* =========================
+   更新结果
+   ========================= */
+
 
 function updateResult() {
 
@@ -1988,77 +1476,36 @@ function updateResult() {
 
 
 
-    // ========================================
-    // 比例尺显示
-    // ========================================
-
-    let scaleText;
+    let text = "";
 
 
-    if (
-        scale === null
-    ) {
+    text +=
+        "自身：" +
+        ownText +
+        "\n";
 
-        scaleText =
-            "未设置";
+
+    text +=
+        "目标：" +
+        targetText +
+        "\n";
+
+
+    if (scale === null) {
+
+        text +=
+            "比例尺：未设置\n";
 
     }
 
     else {
 
-        scaleText =
-
-            "1 格 = "
-
-            +
-
-            scale.toFixed(1)
-
-            +
-
-            " m";
+        text +=
+            "比例尺：1格 = " +
+            scale.toFixed(1) +
+            " m\n";
 
     }
-
-
-
-    let text =
-
-        "自身坐标：\n"
-
-        +
-
-        ownText
-
-        +
-
-        "\n\n"
-
-
-        +
-
-        "目标坐标：\n"
-
-        +
-
-        targetText
-
-        +
-
-        "\n\n"
-
-
-        +
-
-        "比例尺：\n"
-
-        +
-
-        scaleText
-
-        +
-
-        "\n";
 
 
 
@@ -2067,163 +1514,102 @@ function updateResult() {
 
 
 
-    // ========================================
-    // 两个位置都设置以后
-    // ========================================
-
     if (distance) {
 
 
         text +=
-
-            "\n"
-
-            +
-
-            "------ 距离数据 ------\n\n"
-
-            +
-
-            "横向差："
-
-            +
-
-            distance.dxGrid.toFixed(2)
-
-            +
-
-            " 格\n";
+            "\n──────── 距离 ────────\n";
 
 
+        if (scale !== null) {
 
-        // ====================================
-        // 横向实际距离
-        // ====================================
-
-        if (
-            scale !== null
-        ) {
 
             text +=
 
-                "横向距离："
+                "横向：" +
 
-                +
+                distance.dxGrid.toFixed(2) +
+
+                " 格 / " +
 
                 (
-                    distance.dxGrid
-                    *
+                    distance.dxGrid *
                     scale
-                ).toFixed(1)
-
-                +
+                ).toFixed(1) +
 
                 " m\n";
 
-        }
 
-
-
-        text +=
-
-            "\n"
-
-            +
-
-            "纵向差："
-
-            +
-
-            distance.dyGrid.toFixed(2)
-
-            +
-
-            " 格\n";
-
-
-
-        // ====================================
-        // 纵向实际距离
-        // ====================================
-
-        if (
-            scale !== null
-        ) {
 
             text +=
 
-                "纵向距离："
+                "纵向：" +
 
-                +
+                distance.dyGrid.toFixed(2) +
+
+                " 格 / " +
 
                 (
-                    distance.dyGrid
-                    *
+                    distance.dyGrid *
                     scale
-                ).toFixed(1)
-
-                +
+                ).toFixed(1) +
 
                 " m\n";
 
-        }
 
-
-
-        text +=
-
-            "\n"
-
-            +
-
-            "直线格距："
-
-            +
-
-            distance.gridDistance.toFixed(2)
-
-            +
-
-            " 格\n";
-
-
-
-        // ====================================
-        // 实际直线距离
-        // ====================================
-
-        if (
-            scale !== null
-        ) {
 
             text +=
 
-                "实际直线距离："
+                "直线：" +
 
-                +
+                distance.gridDistance.toFixed(2) +
+
+                " 格 / " +
 
                 (
-                    distance.gridDistance
-                    *
+                    distance.gridDistance *
                     scale
-                ).toFixed(1)
-
-                +
+                ).toFixed(1) +
 
                 " m";
 
         }
+
 
         else {
 
 
             text +=
 
-                "\n"
+                "横向：" +
 
-                +
+                distance.dxGrid.toFixed(2) +
 
-                "请输入比例尺后计算实际米数。";
+                " 格\n";
+
+
+
+            text +=
+
+                "纵向：" +
+
+                distance.dyGrid.toFixed(2) +
+
+                " 格\n";
+
+
+
+            text +=
+
+                "直线：" +
+
+                distance.gridDistance.toFixed(2) +
+
+                " 格\n";
+
+
+            text +=
+                "请输入比例尺计算米数。";
 
         }
 
@@ -2238,19 +1624,18 @@ function updateResult() {
 
 
 
-// ============================================
-// 清除目标位置
-// ============================================
+/* =========================
+   清除目标
+   ========================= */
+
 
 function clearTarget() {
 
 
-    targetPoint =
-        null;
+    targetPoint = null;
 
 
-    selectionMode =
-        null;
+    selectionMode = null;
 
 
     modeLabel.textContent =
@@ -2265,27 +1650,19 @@ function clearTarget() {
 
 
 
-// ============================================
-// 全部清零
-//
-// 注意：
-// 比例尺不会被清空
-// 只清除自身和目标位置
-// ============================================
+/* =========================
+   全部清零
+   ========================= */
+
 
 function clearAll() {
 
 
-    ownPoint =
-        null;
+    ownPoint = null;
 
+    targetPoint = null;
 
-    targetPoint =
-        null;
-
-
-    selectionMode =
-        null;
+    selectionMode = null;
 
 
     modeLabel.textContent =
@@ -2300,71 +1677,58 @@ function clearAll() {
 
 
 
-// ============================================
-// 按钮事件
-// ============================================
+/* =========================
+   按钮事件
+   ========================= */
+
 
 ownButton.addEventListener(
-
     "click",
-
     selectOwnMode
-
 );
 
 
 targetButton.addEventListener(
-
     "click",
-
     selectTargetMode
-
 );
 
 
 applyScaleButton.addEventListener(
-
     "click",
-
     updateScale
-
 );
 
 
 clearTargetButton.addEventListener(
-
     "click",
-
     clearTarget
-
 );
 
 
 clearAllButton.addEventListener(
-
     "click",
-
     clearAll
-
 );
 
 
 
-// ============================================
-// 地图点击 / 平板触摸
-// ============================================
+/* =========================
+   地图点击
+   ========================= */
+
 
 svg.addEventListener(
-
     "pointerdown",
-
     mapClick
-
 );
 
 
 
-// 防止平板触摸地图时拖动网页
+/* =========================
+   防止 iPad 拖动地图
+   ========================= */
+
 
 svg.addEventListener(
 
@@ -2377,16 +1741,19 @@ svg.addEventListener(
     },
 
     {
+
         passive: false
+
     }
 
 );
 
 
 
-// ============================================
-// 初始化
-// ============================================
+/* =========================
+   初始化
+   ========================= */
+
 
 updateMarkers();
 
